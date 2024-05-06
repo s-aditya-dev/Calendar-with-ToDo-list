@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender with Todo List</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+    </style>
+</head>
+
+<body class="darkmode">
+    <div class="container">
+        <div class="calendar-container">
+            <div class="header">
+                <div id="StatusDisplay" onclick="yearSelector()"></div>
+                <div class="controls">
+                    <button id="dark-mode"><ion-icon name="sunny-outline"></ion-icon></button>
+                    <button id="today-btn"><ion-icon name="today-outline"></ion-icon></button>
+                    <button id="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button id="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="calendar">
+
+                <div id="Month-Selector" class="month-selector hidden">
+                    <!-- we will create months using js -->
+                </div>
+
+                <div class="weekdays">
+                    <span>SUN</span>
+                    <span>MON</span>
+                    <span>TUE</span>
+                    <span>WED</span>
+                    <span>THU</span>
+                    <span>FRI</span>
+                    <span>SAT</span>
+                </div>
+                <div id="CalenderDays" class="days">
+                    <!-- we will create days using js -->
+
+                    <!-- <span class="day">1
+                        <div id="alert" class="status-medium"></div>
+                    </span> -->
+                </div>
+            </div>
+
+        </div>
+
+        <div id="ToDo-list">
+            <div class="header">
+                <div class="title">To-Do List</div>
+                <div class="controls">
+                    <input type="text" id="to-do-input" placeholder="Add your task">
+                    <button onclick="addTask()">Add</button>
+                </div>
+            </div>
+            <ul id="todo-list-container">
+                <!-- we will make tasks using js                 -->
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="Calendar.js"></script>
+    <script src="ToDo.js"></script>
+    <script src="Main.js"></script>
+    <!-- <script src="ToDo list.js"></script> -->
+
+
+    <script>
+        const theme = localStorage.getItem('theme');
+        const MainHTML = document.getElementsByClassName("darkmode")[0];
+        const darkmodeButton = document.getElementById("dark-mode");
+
+        const sunIcon = '<ion-icon name="sunny-outline"></ion-icon>'
+        const moonIcon = '<ion-icon name="moon-outline"></ion-icon>'
+
+
+        const darkmode = () => {
+            if (MainHTML.classList.contains('dark')) {
+                MainHTML.classList.remove('dark');
+                darkmodeButton.innerHTML = sunIcon;
+                localStorage.removeItem('theme');
+            } else {
+                MainHTML.classList.add('dark');
+                darkmodeButton.innerHTML = moonIcon;
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        }
+
+        if (theme) {
+            darkmode();
+            darkmodeButton.innerHTML = moonIcon
+        }
+
+        darkmodeButton.addEventListener('click', darkmode);
+
+        const isDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (!theme && isDarkMode()) darkmode();
+
+
+    </script>
+</body>
+
+</html>

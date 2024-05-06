@@ -1,0 +1,394 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Resetting default browser styles */
+
+:root {
+  --primary-color: #f90a39;
+  --dark-primary-color: #db0933;
+  --primary-color: #fa4c4c;
+  --dark-primary-color: #e93f3f;
+  --white: #fff;
+  --bg-color: #f1f1fb;
+  --light-grey-color: #ccc;
+  --text-color: #1d1d1d;
+  --white-text: #fff;
+  --grey-text: #ccc;
+  --light-white-color: rgb(219, 219, 219);
+}
+
+.dark {
+  --primary-color: orange;
+  --dark-primary-color: rgb(234, 152, 1);
+  --white: transparent;
+  --bg-color: #141529;
+  --light-grey-color: #79788c;
+  --text-color: #f1f1f1;
+  --grey-text: #979797;
+  --light-white-color: #edeef0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+}
+
+/* Global styles */
+
+.container {
+  width: 100svw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* To-Do List */
+
+#ToDo-list {
+  width: 100%;
+  height: 520px;
+  max-width: 400px;
+  padding: 30px 20px;
+  border-radius: 20px;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#ToDo-list .header .title {
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+#ToDo-list .header .controls {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-areas: "input add";
+  place-items: center;
+  background: var(--light-white-color);
+  border-radius: 30px;
+  padding-left: 20px;
+}
+
+#ToDo-list .header .controls input {
+  grid-area: input;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+#ToDo-list .header .controls button {
+  grid-area: "add";
+  border: none;
+  outline: none;
+  padding: 16px 0;
+  width: 100%;
+  background: var(--primary-color);
+  color: var(--white-text);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 40px;
+  transition: all 0.3s ease-in-out;
+}
+
+#ToDo-list .header .controls button:hover {
+  background-color: var(--dark-primary-color);
+}
+
+#ToDo-list #todo-list-container {
+  flex: 1;
+  overflow-y: scroll;
+  /* overflow-x: hidden; */
+}
+
+#ToDo-list #todo-list-container li {
+  display: flex;
+  align-items: first baseline;
+  gap: 10px;
+}
+
+#ToDo-list #todo-list-container li p {
+  flex: 1;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  hyphens: auto;
+}
+
+.todo-complete {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+#todo-check-box,
+#todo-important,
+#todo-cancel {
+  height: 2.5rem;
+  width: 2.5rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-radius: 100%;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+#todo-check-box,
+#todo-cancel {
+  transform: translateY(2%);
+}
+
+#todo-check-box:hover,
+#todo-important:hover,
+#todo-cancel:hover {
+  background-color: rgb(154, 154, 154);
+  opacity: 0.7;
+}
+
+/* Calender Design */
+
+.calendar-container {
+  width: 100%;
+  max-width: 600px;
+  min-height: 520px;
+  padding: 30px 20px;
+  border-radius: 20px;
+  background-color: var(--bg-color);
+}
+
+.calendar-container .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0px 10px 20px 10px;
+  border-bottom: 2px solid var(--light-grey-color);
+}
+
+.calendar-container .header #StatusDisplay {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.calendar-container .header .controls {
+  display: flex;
+  gap: 10px;
+}
+
+.calendar-container .header .controls button {
+  width: 45px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  color: var(--white-text);
+  background-color: var(--primary-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.calendar-container .header .controls button:hover {
+  background-color: var(--dark-primary-color);
+  transform: scale(1.05);
+}
+
+.calendar {
+  overflow: hidden;
+  position: relative;
+}
+
+.month-selector {
+  position: absolute;
+  height: 100%;
+  top: 0%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: var(--bg-color);
+  transition: all 0.6s ease;
+}
+
+.hidden {
+  z-index: -1;
+  transform: scale(5);
+  opacity: 0;
+}
+
+.active {
+  z-index: 2;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.month {
+  width: 30%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  color: var(--text-color);
+  background-color: var(--light-grey-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.month:hover,
+.curr-month {
+  background-color: var(--dark-primary-color);
+  color: var(--white-text);
+}
+
+.weekdays {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.weekdays span {
+  color: var(--text-color);
+  width: calc(100% / 7 - 10px);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.days .day {
+  width: calc(100% / 7 - 10px);
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: var(--white);
+  transition: all 0.3s;
+}
+
+.days .day:not(.next):not(.prev):not(.curr-date):hover {
+  color: var(--white-text);
+  background-color: var(--primary-color);
+  transform: scale(1.05);
+}
+
+.days .day.today {
+  color: var(--white-text);
+  background-color: var(--primary-color);
+}
+
+.days .day.curr-date {
+  border: 3px solid var(--primary-color);
+}
+
+.days .day.next,
+.days .day.prev {
+  color: var(--grey-text);
+}
+
+.day #alert {
+  position: absolute;
+  bottom: 5px;
+  height: 6px;
+  width: 6px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.day #alert.status-high {
+  background: red;
+}
+
+.day #alert.status-low {
+  background: blue;
+}
+
+.day:hover #alert {
+  background: transparent;
+}
+/* Responsive design */
+
+@media (width<500px) {#dark-mode {display: none;}}
+
+@media (width<450px) {  
+  .days .day, .month { height: 40px;}
+
+  .day #alert {
+    height: 5px;
+    width: 5px;
+  }
+
+}
+
+@media (width<400px) {
+
+  #ToDo-list{
+    height: 400px;
+  }
+
+  .calendar-container {
+    min-height: 400px;
+  }
+
+  .calendar-container .header #StatusDisplay {
+    font-size: clamp(16px, 18px, 25px);
+  }
+
+  .days .day,
+  .month {
+    height: 32px;
+  }
+
+  .day #alert {
+    bottom: 2px;
+  }
+
+  .day #alert {
+    height: 3px;
+    width: 3px;
+  }
+}
