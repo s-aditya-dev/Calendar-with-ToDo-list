@@ -106,7 +106,10 @@
 
         const isDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        if (!theme && isDarkMode()) darkmode();
+        if (!theme && isDarkMode()) {
+            MainHTML.classList.remove('dark');
+            darkmodeButton.innerHTML = sunIcon;
+        };
 
 
     </script>
