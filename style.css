@@ -83,7 +83,6 @@ body {
   place-items: center;
   background: var(--light-white-color);
   border-radius: 30px;
-  padding-left: 20px;
 }
 
 #ToDo-list .header .controls input {
@@ -91,7 +90,7 @@ body {
   border: none;
   outline: none;
   background: transparent;
-  padding: 10px;
+  margin-left: 30px;
   font-weight: 400;
   font-size: 1rem;
 }
